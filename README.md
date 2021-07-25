@@ -12,4 +12,4 @@
 
 ### Technologies used : Python, Flask , MySQL , HTML , CSS , JS, Bootstrap
 
-### -Tean Entity
+### -Team Entity
