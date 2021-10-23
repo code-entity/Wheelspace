@@ -975,6 +975,20 @@ def logout_user():
     session.clear()
     return redirect(url_for('index'))
 
+
+#################################feedback
+
+@app.route('/feedback_form_user')
+def feedback_form():
+    if "user" in session and session["user"] == True:
+        db = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        db.execute("select * from parking_lot")
+        result = db.fetchall()
+        db.close()
+        return render_template('feedback.html',data=result)
+    else:
+        return redirect(url_for("userlog"))
+
 if __name__ == '__main__':
     app.run(debug=True)
     
