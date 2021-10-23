@@ -999,6 +999,17 @@ def feedback_form():
         return render_template('feedback.html',data=result)
     else:
         return redirect(url_for("safflog"))
+    
+   @app.route('/feedback_form_parking')
+def feedback_form():
+    if "staff" in session and session["staff"] == True:
+        db = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        db.execute("select * from parking_lot")
+        result = db.fetchall()
+        db.close()
+        return render_template('feedback.html',data=result)
+    else:
+        return redirect(url_for("safflog"))
 
 if __name__ == '__main__':
     app.run(debug=True)
